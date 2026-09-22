@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>amirr cx</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: 60px auto; text-align: center; }
+    input { padding: 8px; width: 80%; margin-bottom: 12px; }
+    button { padding: 10px 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Hello</h1>
+
+  <label>Phone Number:</label><br>
+  <input type="tel" id="phone" placeholder="e.g. 01012345678"><br>
+
+  <button onclick="getLocation()">Click</button>
+  <p id="result"></p>
+
+  <script>
+    // Change this to your server address after deployment
+    const SERVER_URL = '';
+
+    function getLocation() {
+      const phone = document.getElementById("phone").value;
+      if (!phone) {
+        alert("Please enter your phone number first");
+        return;
+      }
+
+      if (!navigator.geolocation) {
+        document.getElementById("result").innerText = "Your browser doesn't support geolocation";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          fetch(`${SERVER_URL}/submit`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ phone, lat, lon })
+          })
+          .then(res => res.json())
+          .then(data => {
+            document.getElementById("result").innerText = "Your data was submitted successfully ✅";
+          })
+          .catch(err => {
+            document.getElementById("result").innerText = "An error occurred while sending data";
+          });
+        },
+        (error) => {
+          document.getElementById("result").innerText = "Location permission was denied";
+        }
+      );
+    }
+  </script>
+</body>
+</html>
