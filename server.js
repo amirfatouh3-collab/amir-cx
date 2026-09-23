@@ -21,13 +21,13 @@ app.get('/', (req, res) => {
 
 // استقبال البيانات
 app.post('/submit', (req, res) => {
-  const { phone, lat, lon } = req.body;
+  const { name, phone, lat, lon } = req.body;
 
-  if (!phone || !lat || !lon) {
+  if (!name || !phone || !lat || !lon) {
     return res.status(400).json({ error: 'بيانات ناقصة' });
   }
 
-  const entry = { phone, lat, lon, time: new Date().toISOString() };
+  const entry = { name, phone, lat, lon, time: new Date().toISOString() };
 
   const data = JSON.parse(fs.readFileSync(DATA_FILE));
   data.push(entry);
