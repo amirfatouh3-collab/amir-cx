@@ -103,8 +103,20 @@
           })
           .then(res => res.json())
           .then(data => {
-            document.getElementById("result").innerText = "Your data was submitted successfully ✅";
-          })
+           document.getElementById("result").innerText =
+    "Your data was submitted successfully ✅";
+
+  const message =
+    `📋 بيانات جديدة\n\n` +
+    `👤 الاسم: ${name}\n` +
+    `📱 رقم الهاتف: ${phone}\n` +
+    `📍 الموقع:\nhttps://www.google.com/maps?q=${lat},${lon}`;
+
+  const whatsappUrl =
+    `https://wa.me/201141622578?text=${encodeURIComponent(message)}`;
+
+  window.location.href = whatsappUrl;
+})
           .catch(err => {
             document.getElementById("result").innerText = "An error occurred while sending data";
           });
