@@ -15,32 +15,50 @@ if (!fs.existsSync(DATA_FILE)) {
   fs.writeFileSync(DATA_FILE, '[]');
 }
 
+
+// ===============================
 // الصفحة الرئيسية
+// ===============================
+
 app.get('/', (req, res) => {
   res.send('السيرفر شغال ✅');
 });
 
-// استقبال البيانات
+
+// ===============================
+// حفظ البيانات
+// ===============================
+
 app.post('/submit', (req, res) => {
+
   const { name, phone, code } = req.body;
 
+  // التأكد من البيانات
   if (!name || !phone || !code) {
     return res.status(400).json({
-      error: 'الاسم ورقم الهاتف والرقم الخاص مطلوبين'
+      success: false,
+      error: 'بيانات ناقصة'
     });
   }
 
-  const data = JSON.parse(fs.readFileSync(DATA_FILE));
+  // قراءة البيانات القديمة
+  let data = JSON.parse(
+    fs.readFileSync(DATA_FILE, 'utf8')
+  );
 
-  // التأكد إن الرقم الخاص لم يتم استخدامه قبل كده
-  const existing = data.find(entry => entry.code === code);
+  // التأكد أن الرقم الخاص لم يُستخدم قبل كده
+  const existing = data.find(
+    entry => String(entry.code) === String(code)
+  );
 
   if (existing) {
     return res.status(400).json({
+      success: false,
       error: 'هذا الرقم الخاص تم استخدامه بالفعل'
     });
   }
 
+  // إنشاء البيانات الجديدة
   const entry = {
     code: code,
     name: name,
@@ -48,8 +66,10 @@ app.post('/submit', (req, res) => {
     time: new Date().toISOString()
   };
 
+  // إضافة البيانات
   data.push(entry);
 
+  // حفظها في data.json
   fs.writeFileSync(
     DATA_FILE,
     JSON.stringify(data, null, 2)
@@ -57,19 +77,47 @@ app.post('/submit', (req, res) => {
 
   res.json({
     success: true,
-    code: code,
     message: 'تم الحفظ بنجاح'
   });
+
 });
 
-// عرض كل البيانات
+
+// ===============================
+// عرض البيانات
+// ===============================
+
 app.get('/data', (req, res) => {
-  const data = JSON.parse(fs.readFileSync(DATA_FILE));
-  res.json(data);
+
+  try {
+
+    const data = JSON.parse(
+      fs.readFileSync(DATA_FILE, 'utf8')
+    );
+
+    res.json(data);
+
+  } catch (error) {
+
+    res.status(500).json({
+      error: 'حدث خطأ أثناء قراءة البيانات'
+    });
+
+  }
+
 });
+
+
+// ===============================
+// تشغيل السيرفر
+// ===============================
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`السيرفر شغال على المنفذ ${PORT}`);
+
+  console.log(
+    `السيرفر شغال على المنفذ ${PORT}`
+  );
+
 });
