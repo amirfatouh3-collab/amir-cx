@@ -3,9 +3,10 @@ const cors = require('cors');
 const fs = require('fs');
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname)); // يعرض ملفات HTML من نفس الفولدر
+app.use(express.static(__dirname));
 
 const DATA_FILE = 'data.json';
 
@@ -14,33 +15,61 @@ if (!fs.existsSync(DATA_FILE)) {
   fs.writeFileSync(DATA_FILE, '[]');
 }
 
-// صفحة رئيسية بسيطة (اختياري)
+// الصفحة الرئيسية
 app.get('/', (req, res) => {
   res.send('السيرفر شغال ✅');
 });
 
 // استقبال البيانات
 app.post('/submit', (req, res) => {
-  const { name, phone, lat, lon } = req.body;
+  const { name, phone, code } = req.body;
 
-  if (!name || !phone || !lat || !lon) {
-    return res.status(400).json({ error: 'بيانات ناقصة' });
+  if (!name || !phone || !code) {
+    return res.status(400).json({
+      error: 'الاسم ورقم الهاتف والرقم الخاص مطلوبين'
+    });
   }
 
-  const entry = { name, phone, lat, lon, time: new Date().toISOString() };
-
   const data = JSON.parse(fs.readFileSync(DATA_FILE));
-  data.push(entry);
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 
-  res.json({ success: true, message: 'تم الحفظ' });
+  // التأكد إن الرقم الخاص لم يتم استخدامه قبل كده
+  const existing = data.find(entry => entry.code === code);
+
+  if (existing) {
+    return res.status(400).json({
+      error: 'هذا الرقم الخاص تم استخدامه بالفعل'
+    });
+  }
+
+  const entry = {
+    code: code,
+    name: name,
+    phone: phone,
+    time: new Date().toISOString()
+  };
+
+  data.push(entry);
+
+  fs.writeFileSync(
+    DATA_FILE,
+    JSON.stringify(data, null, 2)
+  );
+
+  res.json({
+    success: true,
+    code: code,
+    message: 'تم الحفظ بنجاح'
+  });
 });
 
-// عرض كل البيانات (للمراجعة بس - يفضل تحميها بباسورد لاحقًا في الإنتاج)
+// عرض كل البيانات
 app.get('/data', (req, res) => {
   const data = JSON.parse(fs.readFileSync(DATA_FILE));
   res.json(data);
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`السيرفر شغال على المنفذ ${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`السيرفر شغال على المنفذ ${PORT}`);
+});
